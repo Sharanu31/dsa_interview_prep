@@ -157,7 +157,7 @@ public class ArrayToLLConversion {
 
 		// Insertion in LL - starts
 
-		int[] b = { 25, 42, 98, 63, 12, 77, 20 };
+		int[] b = { 12, 77, 20 };
 		Node01 head02 = arrayToLLConversion(b);
 
 		Node01 insertionAtHead = insertionAtTheHead(head02, 10);
@@ -165,9 +165,75 @@ public class ArrayToLLConversion {
 		traversingLL(insertionAtHead);
 
 		Node01 insertionAtTail = insertionAtTheTail(head02, 87);
-		System.out.printf("Insertion at the head %n");
+		System.out.printf("Insertion at the tail %n");
 		traversingLL(insertionAtTail);
+
+		int ele = 21;
+		int pos = 1;
+		Node01 insertionAtKthPo = insertionAtkthPosition(head02, ele, pos);
+		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
+		traversingLL(insertionAtKthPo);
+
+		int ele01 = 21;
+		int pos01 = 2;
+		Node01 insertionAtKthPo01 = insertionAtkthPosition(head02, ele01, pos01);
+		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
+		traversingLL(insertionAtKthPo01);
+
+		int elem = 29;
+		int valu = 20;
+		Node01 insertionBeforeVal = insertionBeforeVal(head02, elem, valu);
+		System.out.printf("Insertion before value %s %s %n", elem, valu);
+		traversingLL(insertionBeforeVal);
 		// Insertion in LL - ends
+	}
+
+	private static Node01 insertionBeforeVal(Node01 head02, int elem, int valu) {
+		if (head02 == null) {
+			return null;
+		}
+		if (head02.data == valu)
+			return new Node01(elem, head02);
+
+		Node01 temp = head02;
+		while (temp != null) {
+
+			if (temp.next.data == valu) {
+				Node01 x = new Node01(elem, temp.next);
+				temp.next = x;
+				break;
+			}
+			temp = temp.next;
+
+		}
+		return head02;
+	}
+
+	private static Node01 insertionAtkthPosition(Node01 head02, int ele, int pos) {
+
+		if (head02 == null) {
+			if (pos == 1) {
+				return new Node01(ele);
+			} else {
+				return head02;
+			}
+		}
+
+		if (pos == 1) {
+			return new Node01(ele, head02);
+		}
+		int count = 0;
+		Node01 temp = head02;
+		while (temp != null) {
+			count++;
+			if (count == (pos - 1)) {
+				Node01 x = new Node01(ele, temp.next);
+				temp.next = x;
+				break;
+			}
+			temp = temp.next;
+		}
+		return head02;
 	}
 
 	private static Node01 insertionAtTheTail(Node01 head02, int i) {
