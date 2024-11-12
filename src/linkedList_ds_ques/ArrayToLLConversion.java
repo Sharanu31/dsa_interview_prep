@@ -27,6 +27,75 @@ public class ArrayToLLConversion {
 		return head;
 	}
 
+	public static void main(String[] args) {
+		int[] a = { 1, 2, 3, 4, 5 };
+		Node01 head = arrayToLLConversion(a);
+		System.out.println(head.data);
+		System.out.println();
+		System.out.print("Traversing LL : ");
+		traversingLL(head);
+		System.out.println("Length of LL : " + lengthOfLL(head));
+		int val = 5;
+		System.out.printf("Searching for value %s: %s%n", val, searchInLL(head, val));
+
+		// Deletion In LL - starts
+		Node01 afterDeletionHead = deletionOfHead(head);
+		System.out.println("Deletion of Head : ");
+		traversingLL(afterDeletionHead);
+
+		Node01 afterDeletionTail = deletionOfTail(head);
+		System.out.println("Deletion of Tail : " + afterDeletionTail);
+		traversingLL(afterDeletionTail);
+
+		Node01 deletingKthPosition = removeKthPosEle(head, 1);
+		System.out.println("Deletion of Kth Position that is 1st position : " + deletingKthPosition);
+		traversingLL(deletingKthPosition);
+
+		Node01 deletingKthPosition01 = removeKthPosEle(head, 2);
+		System.out.println("Deletion of Kth Position that is 2st position : " + deletingKthPosition01);
+		traversingLL(deletingKthPosition01);
+
+		int[] aa = { 12, 25, 37, 49, 56 };
+		Node01 newHead = arrayToLLConversion(aa);
+		int value = 37;
+		Node01 ewmoveValue = removeValue(newHead, value);
+		System.out.printf("Deleting Particular value %s: ", value);
+		traversingLL(ewmoveValue);
+		// Deletion In LL - end
+
+		// Insertion in LL - starts
+
+		int[] b = { 12, 77, 20 };
+		Node01 head02 = arrayToLLConversion(b);
+
+		Node01 insertionAtHead = insertionAtTheHead(head02, 10);
+		System.out.printf("Insertion at the head %n");
+		traversingLL(insertionAtHead);
+
+		Node01 insertionAtTail = insertionAtTheTail(head02, 87);
+		System.out.printf("Insertion at the tail %n");
+		traversingLL(insertionAtTail);
+
+		int ele = 21;
+		int pos = 1;
+		Node01 insertionAtKthPo = insertionAtkthPosition(head02, ele, pos);
+		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
+		traversingLL(insertionAtKthPo);
+
+		int ele01 = 21;
+		int pos01 = 2;
+		Node01 insertionAtKthPo01 = insertionAtkthPosition(head02, ele01, pos01);
+		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
+		traversingLL(insertionAtKthPo01);
+
+		int elem = 29;
+		int valu = 20;
+		Node01 insertionBeforeVal = insertionBeforeVal(head02, elem, valu);
+		System.out.printf("Insertion before value %s %s %n", elem, valu);
+		traversingLL(insertionBeforeVal);
+		// Insertion in LL - ends
+	}
+
 	static void traversingLL(Node01 head) {
 		Node01 temp = head;
 		while (temp != null) {
@@ -117,75 +186,6 @@ public class ArrayToLLConversion {
 			temp = temp.next;
 		}
 		return 0;
-	}
-
-	public static void main(String[] args) {
-		int[] a = { 1, 2, 3, 4, 5 };
-		Node01 head = arrayToLLConversion(a);
-		System.out.println(head.data);
-		System.out.println();
-		System.out.print("Traversing LL : ");
-		traversingLL(head);
-		System.out.println("Length of LL : " + lengthOfLL(head));
-		int val = 5;
-		System.out.printf("Searching for value %s: %s%n", val, searchInLL(head, val));
-
-		// Deletion In LL - starts
-		Node01 afterDeletionHead = deletionOfHead(head);
-		System.out.println("Deletion of Head : ");
-		traversingLL(afterDeletionHead);
-
-		Node01 afterDeletionTail = deletionOfTail(head);
-		System.out.println("Deletion of Tail : " + afterDeletionTail);
-		traversingLL(afterDeletionTail);
-
-		Node01 deletingKthPosition = removeKthPosEle(head, 1);
-		System.out.println("Deletion of Kth Position that is 1st position : " + deletingKthPosition);
-		traversingLL(deletingKthPosition);
-
-		Node01 deletingKthPosition01 = removeKthPosEle(head, 2);
-		System.out.println("Deletion of Kth Position that is 2st position : " + deletingKthPosition01);
-		traversingLL(deletingKthPosition01);
-
-		int[] aa = { 12, 25, 37, 49, 56 };
-		Node01 newHead = arrayToLLConversion(aa);
-		int value = 56;
-		Node01 ewmoveValue = removeValue(newHead, value);
-		System.out.printf("Deleting Particular value %s: ", value);
-		traversingLL(ewmoveValue);
-		// Deletion In LL - end
-
-		// Insertion in LL - starts
-
-		int[] b = { 12, 77, 20 };
-		Node01 head02 = arrayToLLConversion(b);
-
-		Node01 insertionAtHead = insertionAtTheHead(head02, 10);
-		System.out.printf("Insertion at the head %n");
-		traversingLL(insertionAtHead);
-
-		Node01 insertionAtTail = insertionAtTheTail(head02, 87);
-		System.out.printf("Insertion at the tail %n");
-		traversingLL(insertionAtTail);
-
-		int ele = 21;
-		int pos = 1;
-		Node01 insertionAtKthPo = insertionAtkthPosition(head02, ele, pos);
-		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
-		traversingLL(insertionAtKthPo);
-
-		int ele01 = 21;
-		int pos01 = 2;
-		Node01 insertionAtKthPo01 = insertionAtkthPosition(head02, ele01, pos01);
-		System.out.printf("Insertion at the kth position %s %s %n", ele, pos);
-		traversingLL(insertionAtKthPo01);
-
-		int elem = 29;
-		int valu = 20;
-		Node01 insertionBeforeVal = insertionBeforeVal(head02, elem, valu);
-		System.out.printf("Insertion before value %s %s %n", elem, valu);
-		traversingLL(insertionBeforeVal);
-		// Insertion in LL - ends
 	}
 
 	private static Node01 insertionBeforeVal(Node01 head02, int elem, int valu) {

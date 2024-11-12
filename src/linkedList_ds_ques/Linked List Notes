@@ -38,12 +38,14 @@ Working of 	arrayToLLConversion :
 			 * 
 			 * Creates a new node, temp, with the current array element arr[i] as its data.
 			 * temp.next is null because temp is created with the single-parameter
-			 * constructor, making it the new end of the list. Step 3.2: mover.next = temp;
-			 * 
+			 * constructor, making it the new end of the list. 
+			 *  
+			 * Step 3.2: mover.next = temp;
 			 * Sets the next reference of the current node (mover) to temp, effectively
 			 * linking temp to the end of the list. This extends the linked list by one
-			 * node. Step 3.3: mover = temp;
-			 * 
+			 * node. 
+			 *
+			 * Step 3.3: mover = temp;
 			 * Updates mover to point to temp, so that in the next iteration, the newly
 			 * added node (temp) becomes the current node to which the next node will be
 			 * linked.

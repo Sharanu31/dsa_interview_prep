@@ -8,7 +8,8 @@ public class IntersectionOfTwoLinkedLists {
 
 		ListNode nodeA = ListNode.arrayToLLConversion(listA);
 		ListNode nodeB = ListNode.arrayToLLConversion(listB);
-		getIntersectionNode(nodeA, nodeB);
+		ListNode a = getIntersectionNode(nodeA, nodeB);
+		System.out.println(a);
 		getIntersectionNode01(nodeA, nodeB);
 	}
 
