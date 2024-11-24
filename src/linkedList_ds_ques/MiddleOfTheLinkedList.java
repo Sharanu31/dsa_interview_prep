@@ -4,23 +4,37 @@ public class MiddleOfTheLinkedList {
 
 	public static void main(String args[]) {
 
-		int[] head = { 1, 2, 3, 4, 5 };
+		int[] head = { 1, 2, 3,4, 4, 5 };
 		ListNode node = ListNode.arrayToLLConversion(head);
 		middleNode(node);
+		middleNodeP(node);
+	}
+
+	// Using fast and slow pointers
+	public static ListNode middleNodeP(ListNode head) {
+		ListNode slow = head;
+		ListNode fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow;
+
 	}
 
 	public static ListNode middleNode(ListNode head) {
 		int nLen = nodeSize(head);
-		int mid = nLen / 2;
-		int count = 0;
-		if (nLen % 2 == 0) {
-			if (mid == count) {
-
+		int mid = (nLen / 2) + 1;
+		ListNode node = head;
+		while (node != null) {
+			mid--;
+			if (mid == 0) {
+				// head = node;
+				break;
 			}
-		} else {
-
+			node = node.next;
 		}
-		return head;
+		return node;
 	}
 
 	static int nodeSize(ListNode head) {
