@@ -1,5 +1,8 @@
 package linkedList_ds_ques;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LinkedListCycle {
 
 	public static void main(String[] args) {
@@ -8,6 +11,7 @@ public class LinkedListCycle {
 		ListNode node = ListNode.arrayToLLConversion(head);
 		hasCycle(node);
 		hasCycleh(node);
+		hasCycleUsingingHash(node);
 
 	}
 
@@ -35,4 +39,23 @@ public class LinkedListCycle {
 		}
 		return false;
 	}
+
+	public static boolean hasCycleUsingingHash(ListNode head) {
+
+		ListNode node = head;
+
+		Map<ListNode, Integer> nMap = new HashMap<ListNode, Integer>();
+		while (node != null) {
+
+			if (nMap.containsKey(node)) {
+				return true;
+			}
+			nMap.put(node, 1);
+			node = node.next;
+		}
+
+		return false;
+
+	}
+
 }

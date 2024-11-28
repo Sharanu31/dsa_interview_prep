@@ -1,13 +1,60 @@
 package linkedList_ds_ques;
 
+import java.util.Stack;
+
 public class PalindromeLinkedList {
 
 	public static void main(String[] args) {
 
-		int[] head = { 1, 1, 2, 1 };
+		int[] head = { 1, 2, 2, 1 };
 		ListNode headNode = ListNode.arrayToLLConversion(head);
 		isPalindrome(headNode);
 		isPalindromeOther(headNode);
+		isPalindromeStack(ListNode.arrayToLLConversion(head));
+
+		isPalindromeOpti(ListNode.arrayToLLConversion(head));
+	}
+
+	private static boolean isPalindromeOpti(ListNode node) {
+		ListNode slow = node;
+		ListNode fast = node;
+		while (fast.next != null && fast.next.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+		ListNode newhead = reverseList(slow.next);
+		ListNode first = node;
+		ListNode second = newhead;
+		while (second != null) {
+			if (first.val != second.val) {
+				// reverseList
+				return false;
+			}
+			first = first.next;
+			second = second.next;
+		}
+		return true;
+	}
+
+	public static boolean isPalindromeStack(ListNode head) {
+		Stack<Integer> val = new Stack<Integer>();
+		ListNode temp = head;
+
+		while (temp != null) {
+			val.add(temp.val);
+			temp = temp.next;
+		}
+		temp = head;
+		while (temp != null) {
+			if (temp.val != val.peek()) {
+				return false;
+			}
+			temp = temp.next;
+			val.pop();
+		}
+
+		return true;
+
 	}
 
 	public static boolean isPalindrome(ListNode head) {
