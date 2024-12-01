@@ -4,3 +4,6 @@
 /two_pointer_dsa_ques/
 /sorting_algo/
 /array_ds_ques/
+
+# Ignore Java version file
+.java-version
