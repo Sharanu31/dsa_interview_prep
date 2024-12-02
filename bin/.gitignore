@@ -7,3 +7,5 @@
 
 # Ignore Java version file
 .java-version
+/single_linkedList_ds_ques/
+/double_linkedList_ds_ques/

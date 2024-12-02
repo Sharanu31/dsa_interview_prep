@@ -1,4 +1,4 @@
-package linkedList_ds_ques;
+package single_linkedList_ds_ques;
 
 class Node {
 

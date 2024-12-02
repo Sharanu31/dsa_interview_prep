@@ -1,4 +1,4 @@
-package linkedList_ds_ques;
+package single_linkedList_ds_ques;
 
 import java.util.Collections;
 import java.util.HashMap;
