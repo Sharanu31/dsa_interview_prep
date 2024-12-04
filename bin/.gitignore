@@ -1,11 +1,2 @@
-/linkedList_ds_ques/
-/sliding_window_dsa_ques/
-/string_dsa_ques/
-/two_pointer_dsa_ques/
 /sorting_algo/
-/array_ds_ques/
-
-# Ignore Java version file
-.java-version
 /single_linkedList_ds_ques/
-/double_linkedList_ds_ques/
