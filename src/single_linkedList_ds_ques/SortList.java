@@ -1,21 +1,11 @@
 package single_linkedList_ds_ques;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class SortList {
-
-	public static void main(String[] args) {
-		int[] head = { 4, 2, 1, 3 };
-		ListNode node = ListNode.arrayToLLConversion(head);
-		// sortListBrute(node);
-		sortListBruteOptimsl(ListNode.arrayToLLConversion(head));
-	}
-
-	public static ListNode sortListBrute(ListNode head) {
+	public static ListNode sortListBrute1(ListNode head) {
 		ListNode temp = head;
 		List<Integer> li = new ArrayList<Integer>();
 		while (temp != null) {
@@ -34,82 +24,119 @@ public class SortList {
 
 	}
 
-	public static ListNode sortListBruteOptimsl(ListNode head) {
+	// Function to merge two sorted linked lists
+	static ListNode mergeTwoSortedLinkedLists(ListNode list1, ListNode list2) {
+		// Create a dummy ListNode to serve
+		// as the head of the merged list
+		ListNode dummyListNode = new ListNode(-1);
+		ListNode temp = dummyListNode;
 
-		int size = size(head);
-		int right = size - 1;
-		int left = 0;
-		ListNode newHead = head;
-		int[] toArray = convertToArray(head, size);
-		int temp[] = mergeSort(toArray, left, right);
-		for (int i = 0; i < temp.length; i++) {
-			newHead.val = temp[i];
-		}
-
-		return head;
-	}
-
-	private static int[] mergeSort(int[] toArray, int low, int high) {
-		int mid = low + (high - low) / 2;
-		mergeSort(toArray, low, mid);
-		mergeSort(toArray, mid + 1, high);
-		int[] arr = merge(toArray, low, mid, high);
-		return arr;
-	}
-
-	private static int[] merge(int[] arr, int low, int mid, int high) {
-		ArrayList<Integer> temp = new ArrayList<>(); // temporary array
-		int left = low; // starting index of left half of arr
-		int right = mid + 1; // starting index of right half of arr
-
-		// storing elements in the temporary array in a sorted manner//
-
-		while (left <= mid && right <= high) {
-			if (arr[left] <= arr[right]) {
-				temp.add(arr[left]);
-				left++;
+		// Traverse both lists simultaneously
+		while (list1 != null && list2 != null) {
+			// Compare elements of both lists and
+			// link the smaller ListNode to the merged list
+			if (list1.val <= list2.val) {
+				temp.next = list1;
+				list1 = list1.next;
 			} else {
-				temp.add(arr[right]);
-				right++;
+				temp.next = list2;
+				list2 = list2.next;
 			}
+			// Move the temporary pointer
+			// to the next ListNode
+			temp = temp.next;
 		}
 
-		// if elements on the left half are still left //
-
-		while (left <= mid) {
-			temp.add(arr[left]);
-			left++;
+		// If any list still has remaining
+		// elements, append them to the merged list
+		if (list1 != null) {
+			temp.next = list1;
+		} else {
+			temp.next = list2;
 		}
-
-		// if elements on the right half are still left //
-		while (right <= high) {
-			temp.add(arr[right]);
-			right++;
-		}
-
-		// transfering all elements from temporary to arr //
-		for (int i = low; i <= high; i++) {
-			arr[i] = temp.get(i - low);
-		}
-
-		return arr;
+		// Return the merged list starting
+		// from the next of the dummy ListNode
+		return dummyListNode.next;
 	}
 
-	private static int[] convertToArray(ListNode head, int size) {
-		int[] temp = new int[size];
-		for (int i = 0; i <= size - 1; i++) {
-			temp[i] = head.val;
-			head = head.next;
+	// Function to find the middle of a linked list
+	static ListNode findMiddle(ListNode head) {
+		// If the list is empty or has only one ListNode
+		// the middle is the head itself
+		if (head == null || head.next == null) {
+			return head;
 		}
-		return temp;
+
+		// Initializing slow and fast pointers
+		ListNode slow = head;
+		ListNode fast = head.next;
+
+		// Move the fast pointer twice
+		// as fast as the slow pointer
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		// When the fast pointer reaches the end,
+		// the slow pointer will be at the middle
+		return slow;
 	}
 
-	private static int size(ListNode head) {
-		int count = 0;
-		while (head != null) {
-			count++;
-			head = head.next;
+	// Function to perform merge sort on a linked list
+	static ListNode sortLL(ListNode head) {
+		// Base case: if the list is empty or
+		// has only one ListNode, it is already
+		// sorted, so return the head
+		if (head == null || head.next == null) {
+			return head;
 		}
-		return count;
+
+		// Find the middle of the list
+		// using the findMiddle function
+		ListNode middle = findMiddle(head);
+
+		// Divide the list into two halves
+		ListNode right = middle.next;
+		middle.next = null;
+		ListNode left = head;
+
+		// Recursively sort the left and right halves
+		left = sortLL(left);
+		right = sortLL(right);
+
+		// Merge the sorted halves using the
+		// mergeTwoSortedLinkedLists function
+		return mergeTwoSortedLinkedLists(left, right);
+	}
+
+	// Function to print the linked list
+	static void printLinkedList(ListNode head) {
+		ListNode temp = head;
+		while (temp != null) {
+			// Print the val of the current ListNode
+			System.out.print(temp.val + " ");
+			// Move to the next ListNode
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		// Linked List: 3 2 5 4 1
+		ListNode head = new ListNode(3);
+		head.next = new ListNode(2);
+		head.next.next = new ListNode(5);
+		head.next.next.next = new ListNode(4);
+		head.next.next.next.next = new ListNode(1);
+
+		System.out.print("Original Linked List: ");
+		printLinkedList(head);
+
+		// Sort the linked list
+		head = sortLL(head);
+
+		System.out.print("Sorted Linked List: ");
+		printLinkedList(head);
 	}
 }
