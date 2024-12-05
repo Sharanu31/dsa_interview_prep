@@ -19,6 +19,8 @@ public class IntersectionOfTwoLinkedLists {
 		ListNode temp2 = head2;
 		while (temp1 != temp2) {
 
+			// Sharanu
+
 			temp1 = temp1.next;
 			temp2 = temp2.next;
 
