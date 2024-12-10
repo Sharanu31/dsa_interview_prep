@@ -52,9 +52,7 @@ public class PalindromeLinkedList {
 			temp = temp.next;
 			val.pop();
 		}
-
 		return true;
-
 	}
 
 	public static boolean isPalindrome(ListNode head) {

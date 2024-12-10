@@ -60,11 +60,21 @@ public class DoubleLinkedListCreate {
 		PrintDLL.printDLL(deleteHeadofDll(DtoArray.arraytoDLL(arr)));
 		System.out.println("Deleting Tail ");
 		PrintDLL.printDLL(deleteTailofDll(DtoArray.arraytoDLL(arr)));
+		System.out.println("Deleting Kth Element : 31");
+		PrintDLL.printDLL(deleteKthElementOfDll(DtoArray.arraytoDLL(arr)));
+
+	}
+
+	private static DListNode deleteKthElementOfDll(DListNode head) {
+		DListNode temp = head;
+		// assuming 31
+		//while()
+		return null;
 	}
 
 	private static DListNode deleteTailofDll(DListNode head) {
 		if (head == null || head.next == null) {
-			return null;
+			return null; 
 		}
 
 		DListNode tail = head;
