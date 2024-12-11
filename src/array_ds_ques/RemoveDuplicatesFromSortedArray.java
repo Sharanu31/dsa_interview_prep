@@ -8,7 +8,20 @@ public class RemoveDuplicatesFromSortedArray {
 
 	public static void main(String[] args) {
 		int nums[] = { -3, -1, 0, 0, 0, 3, 3 };
-		bruteRemoveDuplicates(nums);
+		// bruteRemoveDuplicates(nums);
+		optimalRemoveDuplicates(nums);
+	}
+
+	private static int optimalRemoveDuplicates(int[] nums) {
+		int left = 0;
+		for (int right = 1; right < nums.length; right++) {
+			if (nums[right] != nums[left]) {
+				nums[left + 1] = nums[right];
+				left++;
+			}
+		}
+		return left + 1;
+
 	}
 
 	public static int bruteRemoveDuplicates(int[] nums) {
