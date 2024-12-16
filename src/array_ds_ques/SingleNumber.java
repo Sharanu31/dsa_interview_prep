@@ -9,6 +9,16 @@ public class SingleNumber {
 		int[] nums = { 1, 2, 2, 4, 3, 4, 3 };
 		singleNumber(nums);
 		singleNumberOpt(nums);
+		singleNumberOptPro(nums);
+	}
+
+	private static int singleNumberOptPro(int[] nums) {
+		int xor = 0;
+		for (int i = 0; i < nums.length; i++) {
+			xor = xor ^ nums[i];
+		}
+		return xor;
+
 	}
 
 	public static int singleNumber(int[] nums) {

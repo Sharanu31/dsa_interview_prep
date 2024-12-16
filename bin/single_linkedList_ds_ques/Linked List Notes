@@ -1,0 +1,61 @@
+Class  - ArrayToLLConversion
+
+int data; // Holds the integer value of the node.
+Node01 next; // Holds a reference to the next node in the linked list.
+
+Method  - arrayToLLConversion	
+
+mover.next = temp; // Sets the next reference of the current node (mover) to temp, effectively
+								// linking temp to the end of the list.
+mover = temp; // Updates mover to point to temp, so that in the next iteration, the newly
+							// added node (temp) becomes the current node to which the next node will be
+							// linked.
+
+Working of 	arrayToLLConversion :
+/*
+			 * Step-by-Step Explanation Step 1: Node01 head = new Node01(arr[0]);
+			 * 
+			 * Creates a new node, head, using the first element of the array, arr[0]. The
+			 * head node represents the start of the linked list. head is initialized with
+			 * the data value from arr[0] and has next set to null by default.
+			 * 
+			 * Step 2: Node01 mover = head;
+			 * 
+			 * A reference variable mover is created and assigned to head. mover will be
+			 * used to traverse and build the linked list. Starting with mover pointing to
+			 * head allows us to keep track of the current position in the list as we add
+			 * nodes.
+			 * 
+			 * Step 3: for (int i = 1; i < arr.length; i++)
+			 * 
+			 * This loop iterates over the remaining elements in the array (starting from
+			 * index 1 to the end).
+			 * 
+			 * Each iteration will add a new node to the linked list with the corresponding
+			 * array element as its data.
+			 * 
+			 * Step 3.1: Node01 temp = new Node01(arr[i]);
+			 * 
+			 * Creates a new node, temp, with the current array element arr[i] as its data.
+			 * temp.next is null because temp is created with the single-parameter
+			 * constructor, making it the new end of the list. 
+			 *  
+			 * Step 3.2: mover.next = temp;
+			 * Sets the next reference of the current node (mover) to temp, effectively
+			 * linking temp to the end of the list. This extends the linked list by one
+			 * node. 
+			 *
+			 * Step 3.3: mover = temp;
+			 * Updates mover to point to temp, so that in the next iteration, the newly
+			 * added node (temp) becomes the current node to which the next node will be
+			 * linked.
+			 * 
+			 * Step 4: return head;
+			 * 
+			 * After the loop finishes, the method returns the head of the linked list. head
+			 * points to the beginning of the linked list, which is now fully constructed
+			 * based on the array values.
+			 */
+			 
+			 
+			 
