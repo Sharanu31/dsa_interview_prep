@@ -11,7 +11,7 @@ public class ContainerWithMostWater {
 		maxAreaOp(height);
 	}
 
-	public static int maxArea(int[] height) {
+	public static int maxArea(int[] height) { 
 		int max = 0;
 		int i = 0;
 		int j = height.length - 1;

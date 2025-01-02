@@ -12,12 +12,10 @@ public class NextGreaterElementII {
 	}
 
 	public static int[] nextGreaterElements(int[] nums) {
-
-		int[] val = new int[nums.length];
+		int[] val = new int[nums.length]; 
 		Stack<Integer> stk = new Stack<Integer>();
 		int n = nums.length;
 		for (int i = 2 * n - 1; i >= 0; i--) {
-
 			while (!stk.empty() && stk.peek() <= nums[i % n]) {
 				stk.pop();
 			}
@@ -25,11 +23,8 @@ public class NextGreaterElementII {
 				val[i] = stk.isEmpty() ? -1 : stk.peek();
 			}
 			stk.push(nums[i % n]);
-
 		}
-
 		return val;
-
 	}
 
 	public static int[] optnextGreaterElements(int[] nums) {

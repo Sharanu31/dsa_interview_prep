@@ -11,7 +11,6 @@ public class ConsecutiveCharacters {
 		int left = 0;
 		int max = 0;
 		while (right < s.length()) {
-
 			if (s.charAt(left) == s.charAt(right)) {
 				max = Math.max(max, right - left + 1);
 			} else {
@@ -20,6 +19,5 @@ public class ConsecutiveCharacters {
 			right++;
 		}
 		return max;
-
 	}
 }
